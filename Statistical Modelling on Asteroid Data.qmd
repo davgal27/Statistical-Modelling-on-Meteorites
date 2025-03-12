@@ -1,0 +1,13 @@
+---
+title: "Statistical Modelling on Asteroid Data"
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finishd document. To learn more about Quarto see <https://quarto.org>.
+
+```{r}
+1 + 1
+```
+
+# 
