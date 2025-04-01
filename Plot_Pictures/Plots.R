@@ -47,12 +47,18 @@ ggplot(meteorite_counts, aes(x = year, y = count)) +
   theme_minimal()  
 
 ################ BOX PLOT MASS 
-
 ggplot(meteorite_dataset, aes(y = mass)) +
   geom_boxplot(color = "black", fill = "gray") +  
   scale_y_log10() +  # Logarithmic scale for mass
   labs(title = "Boxplot of Meteorite Mass (Log Scale)", y = "Mass (log10 scale)") +
   theme_minimal()
 
+############### FELL_FOUND GRAPH 
+ggplot(Fell_Found_Freq, aes(x = fall, y = n, fill = fall)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Comparison of Fell vs Found Meteorites",
+       x = "Meteorite Type",
+       y = "Count") +
+  theme_minimal()
 
 
