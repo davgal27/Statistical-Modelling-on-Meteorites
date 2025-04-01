@@ -61,7 +61,7 @@ ggplot(Fell_Found_Freq, aes(x = fall, y = n, fill = fall)) +
        y = "Count") +
   theme_minimal()
 
-############## Piechart for meteorite reclassification
+################ PIECHART FOR METEORITE RECLASSIFICATION
 categories <- c("L6", "H5", "H4", "H6", "L5", "LL5", "LL6", "Iron", "L4", "H4/5")
 values <- c(6577, 5607, 3335, 3232, 2744, 1897, 964, 928, 801, 380)
 sorted_indices <- order(values, decreasing = TRUE)
