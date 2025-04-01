@@ -73,3 +73,75 @@ pie(values, labels = pie_labels,
     main = "Piechart showing meteorite reclassification", 
     col = rainbow(length(categories)))
 legend("topright", legend = legend_labels, fill = rainbow(length(categories)), cex = 0.8) 
+
+
+########### HISTOGRAM MASS
+log_mass <- log(positive_mass)
+
+h <- hist(log_mass, main="Log-transformed Histogram of Mass", xlab="Log(Mass)", breaks=40)
+
+m <- mean(log_mass)
+std <- sqrt(var(log_mass ))
+
+xfit <- seq(min(log_mass), max(log_mass), length=100)
+yfit <- dnorm(xfit, mean=m, sd=std)
+
+yfit <- yfit * diff(h$mids[1:2]) * length(log_mass)
+
+lines(xfit, yfit, col="blue", lwd=2)
+
+######### HISTOGRAM YEAR
+filtered_years <- meteorite_dataset$year[meteorite_dataset$year > 1800 (meteorite_dataset$year)]
+
+h <- hist(filtered_years,
+          main = "Histogram of Meteorite Discovery Years (Post-1800)",
+          xlab = "Year",
+          col = "grey",
+          breaks = 50)
+
+m <- mean(filtered_years)
+std <- sd(filtered_years)
+
+xfit <- seq(min(filtered_years), max(filtered_years), length = 100)
+yfit <- dnorm(xfit, mean = m, sd = std)
+yfit <- yfit * diff(h$mids[1:2]) * length(filtered_years)
+
+lines(xfit, yfit, col = "blue", lwd = 2)
+
+
+######### HISTOGRAM RECLAT
+reclat_clean <- reclat[reclat > -90 & reclat <= 90]
+
+hist(reclat_clean,
+     main = "Histogram of Reclat",
+     xlab = "Reclat",
+     col = "gray",
+     breaks = 50) 
+
+m <- mean(reclat_clean)
+std <- sqrt(var(reclat_clean))
+
+xfit <- seq(min(reclat_clean), max(reclat_clean), length = 100)
+yfit <- dnorm(xfit, mean = m, sd = std)
+
+yfit <- yfit * diff(h$mids[1:2]) * length(reclat_clean)
+
+lines(xfit, yfit, col = "blue", lwd = 2)
+
+####### HISTOGRAM RECLONG
+reclong_clean <- reclong[reclong >= -180 & reclong <= 180]
+
+h <- hist(reclong_clean,
+          main = "Histogram of Reclong",
+          xlab = "Reclong",
+          col = "gray",
+          breaks = 50)
+
+m <- mean(reclong_clean)
+std <- sqrt(var(reclong_clean))
+
+xfit <- seq(min(reclong_clean), max(reclong_clean), length = 100)
+yfit <- dnorm(xfit, mean = m, sd = std)
+yfit <- yfit * diff(h$mids[1:2]) * length(reclong_clean)
+
+lines(xfit, yfit, col = "blue", lwd = 2)
